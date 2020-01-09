@@ -1,29 +1,53 @@
 import datetime
-
-def my_code():
-    a = range(100000) 
-    b = [] 
-    for i in a:     
-        b.append(i*2)
+import time
+import random
 
 class Time:
+
     def __init__(self):
-        runtime = 0
-        pass
-    
-    def __str__(self, runtime):
-        return datetime.timedelta(seconds=self.runtime)
+        self.start_time = 0
+        self.pause_time = 0
+        self.endtime = 0
 
-    def start(self):
+    def __str__(self):
+        return str(datetime.timedelta(seconds=self.endtime))
+
+    def start_stopwatch(self):
         """Starts the runtime"""
+        pause = False
+        self.start_time = time.time()
 
-    def pause(self):
+    def pause_stopwatch(self):
         """Pauses the runtime"""
+        pause = True
+        curr_time = time.time() - self.start_time
+        self.pause_time = curr_time + self.pause_time
 
-    def stop(self):
+    def stop_stopwatch(self):
         """Stops the runtime"""
-        return self.runtime
+        if pause == True:
+            end_time = self.pause_time
+            
+
+        elif pause == False:
+            curr_time = time.time() - self.start_time
+            end_time = curr_time + self.pause_time
+        return end_time
+
+def boo():
+    some_list = []
+    for i in range(0,10000):
+        some_list.append(random.randint)
+        if i == 1000:
+            print(i)
+            break
+
+    time1.stop_stopwatch()
 
 def main():
+    time1 = Time()
+    start = time1.start_stopwatch()
+    boo()
+    print(time1)
 
-main()
+main() 
